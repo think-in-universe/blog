@@ -1,6 +1,8 @@
 language: python
 python:
   - '3.6'
+node_js:
+  - stable
 
 install:
   - 'pip install pipenv'
@@ -8,6 +10,7 @@ install:
 
 script:
   - bash .travis/_build.sh
+  - bash .travis/_deploy.sh
 
 branches:
   only:
@@ -16,5 +19,8 @@ branches:
 cache:
   packages: yes
   directories:
+    - $HOME/.cache/pip
     - $HOME/virtualenvs
     - $HOME/.local/share/virtualenvs
+    - $HOME/.npm
+    - node_modules

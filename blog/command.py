@@ -29,11 +29,19 @@ def download(ctx, account=None, days=None, debug=False):
 
 @task(help={
       })
-def test(ctx):
+def build(ctx):
     """ test the generation in local environment """
 
     os.system("cp -f _config.theme.yml themes/icarus/_config.yml")
     os.system("hexo generate")
+
+
+@task(help={
+      })
+def test(ctx):
+    """ test the generation in local environment """
+
+    build(ctx)
     os.system("hexo server -s")
 
 
@@ -42,5 +50,6 @@ def test(ctx):
 def deploy(ctx):
     """ deploy the hexo results to web server """
 
-    os.system("hexo deploy --generate")
+    build(ctx)
+    os.system("hexo deploy")
 
