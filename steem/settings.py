@@ -60,7 +60,7 @@ class Settings:
     def set_steem_node(self, node=None):
         if self.steem_instance is None:
             # print(shared_steem_instance().get_config())
-            api_node = node or self.get_env_var('API_NODE') or STEEM_API_NODES[1]
+            api_node = node or self.get_env_var('API_NODE') or STEEM_API_NODES[2]
             if self.is_debug():
                 print ("connecting to steem node...")
             stm = Steem(
