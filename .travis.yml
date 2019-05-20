@@ -20,7 +20,8 @@ cache:
   packages: yes
   directories:
     - $HOME/.cache/pip
-    - $HOME/virtualenvs
+    - $HOME/virtualenv
     - $HOME/.local/share/virtualenvs
     - $HOME/.npm
+    - $HOME/.nvm
     - node_modules
