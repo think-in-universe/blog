@@ -16,11 +16,15 @@ branches:
   only:
     - master
 
+env:
+  - PIPENV_CACHE_DIR=.pipenv
+
 cache:
   packages: yes
   directories:
     - $HOME/.cache/pip
     - $HOME/virtualenv
+    - $PIPENV_CACHE_DIR
     - $HOME/.local/share/virtualenvs
     - $HOME/.npm
     - $HOME/.nvm
