@@ -125,7 +125,7 @@ widgets:
         # Author's current location to be shown in the profile widget
         location: Galaxy
         # Path or URL to the avatar to be shown in the profile widget
-        avatar:
+        avatar: https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTE5NDg0MDU1MTUzMTE2Njg3/alan-turing-9512017-1-402.jpg
         # Email address for the Gravatar to be shown in the profile widget
         gravatar:
         # Path or URL for the follow button
