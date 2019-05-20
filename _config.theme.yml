@@ -136,7 +136,7 @@ widgets:
                 icon: fab fa-github
                 url: 'http://github.com/think-in-universe'
             Steem:
-                icon: fab fa-steem
+                icon: fab fa-blog
                 url: 'http://steemit.com/@robertyan'
     -
         # Widget name
