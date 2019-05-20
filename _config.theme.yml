@@ -68,7 +68,7 @@ comment:
     shortname: hexo-theme-icarus
 # Donation entries
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Donation/
-# donate:
+donate: false
 #     -
 #         # Donation entry name
 #         type: alipay
@@ -143,11 +143,11 @@ widgets:
         type: toc
         # Where should the widget be placed, left or right
         position: left
-    -
+    # -
         # Widget name
-        type: links
+        # type: links
         # Where should the widget be placed, left or right
-        position: left
+        # position: left
         # Links to be shown in the links widget
         # links:
         #     Hexo: 'https://hexo.io'
@@ -194,7 +194,7 @@ plugins:
     back-to-top: true
     # Google Analytics plugin settings
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/site-analytics-plugin/#Google-Analytics
-    # google-analytics:
+    google-analytics: false
     #     # Google Analytics tracking id
     #     tracking_id: UA-72437521-5
     # Baidu Analytics plugin settings
@@ -204,7 +204,7 @@ plugins:
         tracking_id:
     # Hotjar user feedback plugin
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/site-analytics-plugin/#Hotjar
-    # hotjar:
+    hotjar: false
     #     # Hotjar site id
     #     site_id: 1067642
     # Show a loading progress bar at top of the page

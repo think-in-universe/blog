@@ -7,5 +7,6 @@ set -e
 pipenv install --pypi-mirror https://pypi.python.org/simple
 
 # install hexo commands
+npm install -g hexo-cli
 npm install
 

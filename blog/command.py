@@ -12,13 +12,16 @@ from blog.builder import BlogBuilder
       'days': 'the posts in recent days to fetch',
       'debug': 'enable the debug mode'
       })
-def download(ctx, account="robertyan", days=None, debug=False):
+def download(ctx, account=None, days=None, debug=False):
     """ download the posts by the account """
 
     if debug:
       settings.set_debug_mode()
 
     settings.set_steem_node()
+
+    account = account or settings.get_env_var("STEEM_ACCOUNT")
+    days = days or settings.get_env_var("DURATION")
 
     builder = BlogBuilder(account=account, days=days)
     builder.download()
@@ -30,7 +33,7 @@ def test(ctx):
     """ test the generation in local environment """
 
     os.system("hexo generate")
-    os.system("hexo server")
+    os.system("hexo server -s")
 
 
 @task(help={
