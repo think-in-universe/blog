@@ -32,6 +32,7 @@ def download(ctx, account=None, days=None, debug=False):
 def test(ctx):
     """ test the generation in local environment """
 
+    os.system("cp -f _config.theme.yml themes/icarus/_config.yml")
     os.system("hexo generate")
     os.system("hexo server -s")
 
