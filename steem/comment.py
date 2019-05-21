@@ -111,7 +111,7 @@ class SteemComment:
             links = [tag.get("href") for tag in tags]
 
         if len(links) > 0:
-            links = [self._get_valid_link(link) for link in links]
+            links = [self._get_valid_link(link) for link in links if link is not None]
 
         return links or []
 
@@ -126,7 +126,7 @@ class SteemComment:
         links = [tag.get("src") for tag in tags]
 
         if len(links) > 0:
-            links = [self._get_valid_link(link) for link in links]
+            links = [self._get_valid_link(link) for link in links if link is not None]
 
         return links or []
 
