@@ -1,11 +1,11 @@
 # Version of the Icarus theme that is currently used
 version: 2.3.0
 # Path or URL to the website's icon
-favicon: /images/favicon.svg
+favicon: https://www.easyicon.net/api/resizeApi.php?id=1214912&size=32
 # Path or URL to RSS atom.xml
 rss:
 # Path or URL to the website's logo to be shown on the left of the navigation bar or footer
-logo: /images/logo.svg
+logo: https://www.easyicon.net/api/resizeApi.php?id=1214912&size=72
 # Open Graph metadata
 # https://hexo.io/docs/helpers.html#open-graph
 open_graph:
@@ -50,7 +50,7 @@ footer:
 article:
     # Code highlight theme
     # https://github.com/highlightjs/highlight.js/tree/master/src/styles
-    highlight: atom-one-light
+    highlight: atom-one-dark
     # Whether to show article thumbnail images
     thumbnail: true
     # Whether to show estimate article reading time
@@ -138,11 +138,6 @@ widgets:
             Steem:
                 icon: fa fa-book
                 url: 'http://steemit.com/@robertyan'
-    -
-        # Widget name
-        type: toc
-        # Where should the widget be placed, left or right
-        position: left
     # -
         # Widget name
         # type: links
@@ -164,6 +159,16 @@ widgets:
         position: left
     -
         # Widget name
+        type: tag
+        # Where should the widget be placed, left or right
+        position: left
+    -
+        # Widget name
+        type: toc
+        # Where should the widget be placed, left or right
+        position: right
+    -
+        # Widget name
         type: recent_posts
         # Where should the widget be placed, left or right
         position: right
@@ -172,11 +177,7 @@ widgets:
         type: archive
         # Where should the widget be placed, left or right
         position: right
-    -
-        # Widget name
-        type: tag
-        # Where should the widget be placed, left or right
-        position: right
+
 # Other plugin settings
 plugins:
     # Enable page animations
