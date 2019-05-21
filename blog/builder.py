@@ -13,20 +13,23 @@ BLOG_CONTENT_FOLDER = "./source/_posts"
 
 class BlogBuilder(SteemReader):
 
-    def __init__(self, account="steem-guides", days=None):
-        SteemReader.__init__(self, account=account, days=days)
+    def __init__(self, account=None, tag=None, days=None):
+        SteemReader.__init__(self, account=account, tag=tag, days=days)
         self.attributes = [u'title', u'pending_payout_value',
             u'author', u'net_votes', u'created', u'url'
             # u'permlink', u'authorperm', u'body', u'community', u'category',
         ]
-        self.author = account
-        self.blog_folder = os.path.join(BLOG_CONTENT_FOLDER, self.author)
+        if self.account:
+            self.blog_folder = os.path.join(BLOG_CONTENT_FOLDER, "account", self.account)
+        elif self.tag:
+            self.blog_folder = os.path.join(BLOG_CONTENT_FOLDER, "tag", self.tag)
         if not os.path.exists(self.blog_folder):
             os.makedirs(self.blog_folder)
 
     def get_name(self):
         name = "blog"
-        return "{}-{}-{}".format(name, self.author, self._get_time_str())
+        target = self.account or self.tag
+        return "{}-{}-{}".format(name, target, self._get_time_str())
 
     def is_qualified(self, post):
         return True
