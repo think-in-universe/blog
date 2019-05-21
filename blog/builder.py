@@ -15,10 +15,8 @@ class BlogBuilder(SteemReader):
 
     def __init__(self, account=None, tag=None, days=None):
         SteemReader.__init__(self, account=account, tag=tag, days=days)
-        self.attributes = [u'title', u'pending_payout_value',
-            u'author', u'net_votes', u'created', u'url'
-            # u'permlink', u'authorperm', u'body', u'community', u'category',
-        ]
+
+        # create blog folder
         if self.account:
             self.blog_folder = os.path.join(BLOG_CONTENT_FOLDER, "account", self.account)
         elif self.tag:
@@ -48,10 +46,11 @@ class BlogBuilder(SteemReader):
         date = date_str.replace('T', ' ')
         tags = "\n".join(["- {}".format(tag) for tag in c.get_tags()])
         category = c.get_tags()[0]
+        thumbnail = c.get_pic_url() or ''
 
         # build content with template
         template = get_message("blog")
-        content = template.format(title=title, date=date, tags=tags, category=category, body=body)
+        content = template.format(title=title, date=date, tags=tags, category=category, thumbnail=thumbnail, body=body)
 
         # write into MD files
         filename = os.path.join(folder, "{}_{}.md".format(date_str.split('T')[0], post["permlink"]))

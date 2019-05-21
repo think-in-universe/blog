@@ -47,6 +47,26 @@ class SteemComment:
 
         return self.url
 
+    def get_pic_url(self, regex=False):
+        if regex:
+            # follow markdown format
+            m = re.search(r"!\[(.*)\]\((\S+)\)", self.get_comment().body)
+            if m:
+                pic_url = m.group(2)
+                return pic_url
+
+            # follow url format
+            m = re.search(REGEX_IMAGE_URL, self.get_comment().body)
+            if m:
+                pic_url = m.group(0)
+                return pic_url
+        else:
+            links = self.get_img_links()
+            if links and len(links) > 0:
+                return links[0]
+
+        return None
+
     def get_text_body(self):
         """ Converts a markdown string to plaintext """
 
@@ -64,6 +84,51 @@ class SteemComment:
         text = re.sub(REGEX_IMAGE_URL, '', text)
 
         return text
+
+    def _get_valid_link(self, url):
+        url = url.strip()
+        if url[-1] == ")":
+            url = url[:-1]
+        # unescape HTML chars
+        return html.unescape(url)
+
+    def _is_img_link(self, url):
+        m = re.match(REGEX_IMAGE_URL, url)
+        return m is not None
+
+    def get_links(self, regex=True):
+        body = self.get_comment().body
+
+        if regex:
+            # text = re.sub('<[^<]+?>', ' ', str(self.text))
+            links = re.findall(URL_REGEX, body)
+        else:
+            # md -> html -> text since BeautifulSoup can extract text cleanly
+            html = markdown(body)
+            # extract links
+            soup = BeautifulSoup(html, "html.parser")
+            tags = soup.findAll("a")
+            links = [tag.get("href") for tag in tags]
+
+        if len(links) > 0:
+            links = [self._get_valid_link(link) for link in links]
+
+        return links or []
+
+    def get_img_links(self):
+        body = self.get_comment().body
+
+        # md -> html -> text since BeautifulSoup can extract text cleanly
+        html = markdown(body)
+        # extract links
+        soup = BeautifulSoup(html, "html.parser")
+        tags = soup.findAll("img")
+        links = [tag.get("src") for tag in tags]
+
+        if len(links) > 0:
+            links = [self._get_valid_link(link) for link in links]
+
+        return links or []
 
     def get_tags(self):
         c = self.get_comment()

@@ -31,6 +31,7 @@ categories:
 - {category}
 tags:
 {tags}
+thumbnail: {thumbnail}
 ---
 
 
