@@ -47,10 +47,11 @@ class BlogBuilder(SteemReader):
         tags = "\n".join(["- {}".format(tag) for tag in c.get_tags()])
         category = c.get_tags()[0]
         thumbnail = c.get_pic_url() or ''
+        url = c.get_url()
 
         # build content with template
         template = get_message("blog")
-        content = template.format(title=title, date=date, tags=tags, category=category, thumbnail=thumbnail, body=body)
+        content = template.format(title=title, date=date, tags=tags, category=category, thumbnail=thumbnail, body=body, url=url)
 
         # write into MD files
         filename = os.path.join(folder, "{}_{}.md".format(date_str.split('T')[0], post["permlink"]))
